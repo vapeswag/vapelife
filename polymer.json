@@ -24,7 +24,7 @@
     {
       "preset": "es5-bundled",
       "html": { "minify": false},
-      "addServiceWorker": false,
+      "addServiceWorker": false
     }
   ]
 }
