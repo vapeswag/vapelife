@@ -6,7 +6,9 @@ The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
 The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
 Code distributed by Google as part of the polymer project is also
 subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
---><link rel="import" href="../bower_components/polymer/polymer-element.html">
+-->
+
+<link rel="import" href="../bower_components/polymer/polymer-element.html">
 <link rel="import" href="shop-button.html">
 <link rel="import" href="shop-common-styles.html">
 <link rel="import" href="shop-form-styles.html">
@@ -59,7 +61,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         </div>
         <div class="checkout-box">
           Total: <span class="subtotal">[[_formatTotal(total)]]</span>
-          <shop-button responsive="">
+          <shop-button responsive>
             <a href="/checkout">Checkout</a>
           </shop-button>
         </div>
@@ -68,70 +70,54 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
   </template>
 
-  <script>var ShopCart =
-/*#__PURE__*/
-function (_Polymer$Element) {
-  babelHelpers.inherits(ShopCart, _Polymer$Element);
+  <script>
 
-  function ShopCart() {
-    babelHelpers.classCallCheck(this, ShopCart);
-    return babelHelpers.possibleConstructorReturn(this, (ShopCart.__proto__ || Object.getPrototypeOf(ShopCart)).apply(this, arguments));
-  }
+    class ShopCart extends Polymer.Element {
 
-  babelHelpers.createClass(ShopCart, [{
-    key: "_formatTotal",
-    value: function _formatTotal(total) {
-      return isNaN(total) ? '' : '$' + total.toFixed(2);
-    }
-  }, {
-    key: "_computeHasItem",
-    value: function _computeHasItem(cartLength) {
-      return cartLength > 0;
-    }
-  }, {
-    key: "_getPluralizedQuantity",
-    value: function _getPluralizedQuantity(quantity) {
-      return quantity + ' ' + (quantity === 1 ? 'item' : 'items');
-    }
-  }, {
-    key: "_visibleChanged",
-    value: function _visibleChanged(visible) {
-      if (visible) {
-        // Notify the section's title
-        this.dispatchEvent(new CustomEvent('change-section', {
-          bubbles: true,
-          composed: true,
-          detail: {
-            title: 'Your cart'
-          }
-        }));
-      }
-    }
-  }], [{
-    key: "is",
-    get: function get() {
-      return 'shop-cart';
-    }
-  }, {
-    key: "properties",
-    get: function get() {
-      return {
+      static get is() { return 'shop-cart'; }
+
+      static get properties() { return {
+
         total: Number,
+
         cart: Array,
+
         visible: {
           type: Boolean,
           observer: '_visibleChanged'
         },
+
         _hasItems: {
           type: Boolean,
           computed: '_computeHasItem(cart.length)'
         }
-      };
-    }
-  }]);
-  return ShopCart;
-}(Polymer.Element);
 
-customElements.define(ShopCart.is, ShopCart);</script>
+      }}
+
+      _formatTotal(total) {
+        return isNaN(total) ? '' : '$' + total.toFixed(2);
+      }
+
+      _computeHasItem(cartLength) {
+        return cartLength > 0;
+      }
+
+      _getPluralizedQuantity(quantity) {
+        return quantity + ' ' + (quantity === 1 ? 'item' : 'items');
+      }
+
+      _visibleChanged(visible) {
+        if (visible) {
+          // Notify the section's title
+          this.dispatchEvent(new CustomEvent('change-section', {
+            bubbles: true, composed: true, detail: { title: 'Your cart' }}));
+        }
+      }
+
+    }
+
+    customElements.define(ShopCart.is, ShopCart);
+
+  </script>
 
 </dom-module>

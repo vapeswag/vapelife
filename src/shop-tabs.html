@@ -6,13 +6,15 @@ The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
 The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
 Code distributed by Google as part of the polymer project is also
 subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
---><link rel="import" href="../bower_components/polymer/polymer-element.html">
+-->
+
+<link rel="import" href="../bower_components/polymer/polymer-element.html">
 <link rel="import" href="../bower_components/iron-flex-layout/iron-flex-layout.html">
 <link rel="import" href="../bower_components/iron-selector/iron-selectable.html">
 <link rel="import" href="shop-tabs-overlay.html">
 
 <dom-module id="shop-tabs">
-  <template strip-whitespace="">
+  <template strip-whitespace>
     <style>
       :host {
         @apply --layout;
@@ -32,35 +34,25 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       <slot></slot>
     </div>
   </template>
-  <script>var ShopTabs =
-/*#__PURE__*/
-function (_Polymer$mixinBehavio) {
-  babelHelpers.inherits(ShopTabs, _Polymer$mixinBehavio);
+  <script>
 
-  function ShopTabs() {
-    babelHelpers.classCallCheck(this, ShopTabs);
-    return babelHelpers.possibleConstructorReturn(this, (ShopTabs.__proto__ || Object.getPrototypeOf(ShopTabs)).apply(this, arguments));
-  }
+    class ShopTabs extends Polymer.mixinBehaviors(
+      [Polymer.IronSelectableBehavior], Polymer.Element) {
 
-  babelHelpers.createClass(ShopTabs, [{
-    key: "_onSelectedItemChanged",
-    value: function _onSelectedItemChanged(selectedItem) {
-      if (selectedItem === undefined && this.selected) return;
-      this.$.overlay.target = selectedItem;
-    }
-  }], [{
-    key: "is",
-    get: function get() {
-      return 'shop-tabs';
-    }
-  }, {
-    key: "observers",
-    get: function get() {
-      return ['_onSelectedItemChanged(selectedItem)'];
-    }
-  }]);
-  return ShopTabs;
-}(Polymer.mixinBehaviors([Polymer.IronSelectableBehavior], Polymer.Element));
+      static get is() { return 'shop-tabs'; }
 
-customElements.define(ShopTabs.is, ShopTabs);</script>
+      static get observers() { return [
+        '_onSelectedItemChanged(selectedItem)'
+      ]}
+
+      _onSelectedItemChanged(selectedItem) {
+        if (selectedItem === undefined && this.selected) return;
+
+        this.$.overlay.target = selectedItem;
+      }
+    }
+
+    customElements.define(ShopTabs.is, ShopTabs);
+
+  </script>
 </dom-module>
