@@ -22,7 +22,9 @@
   },
   "builds": [
     {
-      "preset": "es5-bundled"
+      "preset": "es5-bundled",
+      "html": { "minify": false},
+      "addServiceWorker": false,
     }
   ]
 }
