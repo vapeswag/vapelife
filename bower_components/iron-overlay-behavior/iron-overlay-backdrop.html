@@ -6,9 +6,7 @@ The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
 The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
 Code distributed by Google as part of the polymer project is also
 subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
--->
-
-<link rel="import" href="../polymer/polymer.html">
+--><link rel="import" href="../polymer/polymer.html">
 
 <!--
 `iron-overlay-backdrop` is a backdrop used by `Polymer.IronOverlayBehavior`. It should be a
@@ -55,106 +53,100 @@ Custom property | Description | Default
 
 </dom-module>
 
-<script>
-  Polymer({
-
-    is: 'iron-overlay-backdrop',
-
-    properties: {
-
-      /**
-       * Returns true if the backdrop is opened.
-       */
-      opened: {
-        reflectToAttribute: true,
-        type: Boolean,
-        value: false,
-        observer: '_openedChanged'
-      }
-
-    },
-
-    listeners: {'transitionend': '_onTransitionend'},
-
-    created: function() {
-      // Used to cancel previous requestAnimationFrame calls when opened changes.
-      this.__openedRaf = null;
-    },
-
-    attached: function() {
-      this.opened && this._openedChanged(this.opened);
-    },
-
+<script>Polymer({
+  is: 'iron-overlay-backdrop',
+  properties: {
     /**
-     * Appends the backdrop to document body if needed.
+     * Returns true if the backdrop is opened.
      */
-    prepare: function() {
-      if (this.opened && !this.parentNode) {
-        Polymer.dom(document.body).appendChild(this);
-      }
-    },
+    opened: {
+      reflectToAttribute: true,
+      type: Boolean,
+      value: false,
+      observer: '_openedChanged'
+    }
+  },
+  listeners: {
+    'transitionend': '_onTransitionend'
+  },
+  created: function created() {
+    // Used to cancel previous requestAnimationFrame calls when opened changes.
+    this.__openedRaf = null;
+  },
+  attached: function attached() {
+    this.opened && this._openedChanged(this.opened);
+  },
 
-    /**
-     * Shows the backdrop.
-     */
-    open: function() {
-      this.opened = true;
-    },
+  /**
+   * Appends the backdrop to document body if needed.
+   */
+  prepare: function prepare() {
+    if (this.opened && !this.parentNode) {
+      Polymer.dom(document.body).appendChild(this);
+    }
+  },
 
-    /**
-     * Hides the backdrop.
-     */
-    close: function() {
-      this.opened = false;
-    },
+  /**
+   * Shows the backdrop.
+   */
+  open: function open() {
+    this.opened = true;
+  },
 
-    /**
-     * Removes the backdrop from document body if needed.
-     */
-    complete: function() {
-      if (!this.opened && this.parentNode === document.body) {
-        Polymer.dom(this.parentNode).removeChild(this);
-      }
-    },
+  /**
+   * Hides the backdrop.
+   */
+  close: function close() {
+    this.opened = false;
+  },
 
-    _onTransitionend: function(event) {
-      if (event && event.target === this) {
+  /**
+   * Removes the backdrop from document body if needed.
+   */
+  complete: function complete() {
+    if (!this.opened && this.parentNode === document.body) {
+      Polymer.dom(this.parentNode).removeChild(this);
+    }
+  },
+  _onTransitionend: function _onTransitionend(event) {
+    if (event && event.target === this) {
+      this.complete();
+    }
+  },
+
+  /**
+   * @param {boolean} opened
+   * @private
+   */
+  _openedChanged: function _openedChanged(opened) {
+    if (opened) {
+      // Auto-attach.
+      this.prepare();
+    } else {
+      // Animation might be disabled via the mixin or opacity custom property.
+      // If it is disabled in other ways, it's up to the user to call complete.
+      var cs = window.getComputedStyle(this);
+
+      if (cs.transitionDuration === '0s' || cs.opacity == 0) {
         this.complete();
       }
-    },
-
-    /**
-     * @param {boolean} opened
-     * @private
-     */
-    _openedChanged: function(opened) {
-      if (opened) {
-        // Auto-attach.
-        this.prepare();
-      } else {
-        // Animation might be disabled via the mixin or opacity custom property.
-        // If it is disabled in other ways, it's up to the user to call complete.
-        var cs = window.getComputedStyle(this);
-        if (cs.transitionDuration === '0s' || cs.opacity == 0) {
-          this.complete();
-        }
-      }
-
-      if (!this.isAttached) {
-        return;
-      }
-
-      // Always cancel previous requestAnimationFrame.
-      if (this.__openedRaf) {
-        window.cancelAnimationFrame(this.__openedRaf);
-        this.__openedRaf = null;
-      }
-      // Force relayout to ensure proper transitions.
-      this.scrollTop = this.scrollTop;
-      this.__openedRaf = window.requestAnimationFrame(function() {
-        this.__openedRaf = null;
-        this.toggleClass('opened', this.opened);
-      }.bind(this));
     }
-  });
-</script>
+
+    if (!this.isAttached) {
+      return;
+    } // Always cancel previous requestAnimationFrame.
+
+
+    if (this.__openedRaf) {
+      window.cancelAnimationFrame(this.__openedRaf);
+      this.__openedRaf = null;
+    } // Force relayout to ensure proper transitions.
+
+
+    this.scrollTop = this.scrollTop;
+    this.__openedRaf = window.requestAnimationFrame(function () {
+      this.__openedRaf = null;
+      this.toggleClass('opened', this.opened);
+    }.bind(this));
+  }
+});</script>
