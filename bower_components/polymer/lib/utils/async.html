@@ -6,40 +6,38 @@ The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
 The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
 Code distributed by Google as part of the polymer project is also
 subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
---><link rel="import" href="boot.html">
+-->
+<link rel="import" href="boot.html">
 
-<script>(function () {
-  'use strict'; // Microtask implemented using Mutation Observer
+<script>
+(function() {
 
-  var microtaskCurrHandle = 0;
-  var microtaskLastHandle = 0;
-  var microtaskCallbacks = [];
-  var microtaskNodeContent = 0;
-  var microtaskNode = document.createTextNode('');
-  new window.MutationObserver(microtaskFlush).observe(microtaskNode, {
-    characterData: true
-  });
+  'use strict';
+
+  // Microtask implemented using Mutation Observer
+  let microtaskCurrHandle = 0;
+  let microtaskLastHandle = 0;
+  let microtaskCallbacks = [];
+  let microtaskNodeContent = 0;
+  let microtaskNode = document.createTextNode('');
+  new window.MutationObserver(microtaskFlush).observe(microtaskNode, {characterData: true});
 
   function microtaskFlush() {
-    var len = microtaskCallbacks.length;
-
-    for (var i = 0; i < len; i++) {
-      var cb = microtaskCallbacks[i];
-
+    const len = microtaskCallbacks.length;
+    for (let i = 0; i < len; i++) {
+      let cb = microtaskCallbacks[i];
       if (cb) {
         try {
           cb();
         } catch (e) {
-          setTimeout(function () {
-            throw e;
-          });
+          setTimeout(() => { throw e; });
         }
       }
     }
-
     microtaskCallbacks.splice(0, len);
     microtaskLastHandle += len;
   }
+
   /**
    * Module that provides a number of strategies for enqueuing asynchronous
    * tasks.  Each sub-module provides a standard `run(fn)` interface that returns a
@@ -51,9 +49,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
    * @summary Module that provides a number of strategies for enqueuing asynchronous
    * tasks.
    */
-
-
   Polymer.Async = {
+
     /**
      * Async interface wrapper around `setTimeout`.
      *
@@ -70,17 +67,14 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
        * @param {number=} delay Time to wait before calling callbacks in ms
        * @return {!AsyncInterface} An async timeout interface
        */
-      after: function after(delay) {
+      after(delay) {
         return {
-          run: function run(fn) {
-            return window.setTimeout(fn, delay);
-          },
-          cancel: function cancel(handle) {
+          run(fn) { return window.setTimeout(fn, delay); },
+          cancel(handle) {
             window.clearTimeout(handle);
           }
         };
       },
-
       /**
        * Enqueues a function called in the next task.
        *
@@ -89,10 +83,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
        * @param {number=} delay Delay in milliseconds
        * @return {number} Handle used for canceling task
        */
-      run: function run(fn, delay) {
+      run(fn, delay) {
         return window.setTimeout(fn, delay);
       },
-
       /**
        * Cancels a previously enqueued `timeOut` callback.
        *
@@ -100,7 +93,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
        * @param {number} handle Handle returned from `run` of callback to cancel
        * @return {void}
        */
-      cancel: function cancel(handle) {
+      cancel(handle) {
         window.clearTimeout(handle);
       }
     },
@@ -120,10 +113,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
        * @param {function(number):void} fn Callback to run
        * @return {number} Handle used for canceling task
        */
-      run: function run(fn) {
+      run(fn) {
         return window.requestAnimationFrame(fn);
       },
-
       /**
        * Cancels a previously enqueued `animationFrame` callback.
        *
@@ -131,7 +123,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
        * @param {number} handle Handle returned from `run` of callback to cancel
        * @return {void}
        */
-      cancel: function cancel(handle) {
+      cancel(handle) {
         window.cancelAnimationFrame(handle);
       }
     },
@@ -152,10 +144,11 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
        * @param {function(!IdleDeadline):void} fn Callback to run
        * @return {number} Handle used for canceling task
        */
-      run: function run(fn) {
-        return window.requestIdleCallback ? window.requestIdleCallback(fn) : window.setTimeout(fn, 16);
+      run(fn) {
+        return window.requestIdleCallback ?
+          window.requestIdleCallback(fn) :
+          window.setTimeout(fn, 16);
       },
-
       /**
        * Cancels a previously enqueued `idlePeriod` callback.
        *
@@ -163,8 +156,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
        * @param {number} handle Handle returned from `run` of callback to cancel
        * @return {void}
        */
-      cancel: function cancel(handle) {
-        window.cancelIdleCallback ? window.cancelIdleCallback(handle) : window.clearTimeout(handle);
+      cancel(handle) {
+        window.cancelIdleCallback ?
+          window.cancelIdleCallback(handle) :
+          window.clearTimeout(handle);
       }
     },
 
@@ -183,6 +178,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
      *   timing.
      */
     microTask: {
+
       /**
        * Enqueues a function called at microtask timing.
        *
@@ -190,7 +186,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
        * @param {!Function=} callback Callback to run
        * @return {number} Handle used for canceling task
        */
-      run: function run(callback) {
+      run(callback) {
         microtaskNode.textContent = microtaskNodeContent++;
         microtaskCallbacks.push(callback);
         return microtaskCurrHandle++;
@@ -203,17 +199,18 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
        * @param {number} handle Handle returned from `run` of callback to cancel
        * @return {void}
        */
-      cancel: function cancel(handle) {
-        var idx = handle - microtaskLastHandle;
-
+      cancel(handle) {
+        const idx = handle - microtaskLastHandle;
         if (idx >= 0) {
           if (!microtaskCallbacks[idx]) {
             throw new Error('invalid async handle: ' + handle);
           }
-
           microtaskCallbacks[idx] = null;
         }
       }
+
     }
   };
-})();</script>
+
+})();
+</script>
