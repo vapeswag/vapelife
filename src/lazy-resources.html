@@ -14,7 +14,9 @@ The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
 The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
 Code distributed by Google as part of the polymer project is also
 subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
---><!--
+-->
+
+<!--
 @license
 Copyright (c) 2015 The Polymer Project Authors. All rights reserved.
 This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
@@ -177,7 +179,8 @@ The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
 The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
 Code distributed by Google as part of the polymer project is also
 subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
---><script>var ShopAnalytics=function(_HTMLElement){babelHelpers.inherits(ShopAnalytics,_HTMLElement);function ShopAnalytics(){babelHelpers.classCallCheck(this,ShopAnalytics);return babelHelpers.possibleConstructorReturn(this,(ShopAnalytics.__proto__||Object.getPrototypeOf(ShopAnalytics)).apply(this,arguments))}babelHelpers.createClass(ShopAnalytics,[{key:"connectedCallback",value:function(){(function(i,s,o,g,r,a,m){i.GoogleAnalyticsObject=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date;a=s.createElement(o),m=s.getElementsByTagName("body")[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,"script","//www.google-analytics.com/analytics.js","ga");ga("create",this.getAttribute("key"),"auto");ga("send","pageview")}}]);return ShopAnalytics}(HTMLElement);customElements.define("shop-analytics",ShopAnalytics);</script><!--
+-->
+<script>var ShopAnalytics=function(_HTMLElement){babelHelpers.inherits(ShopAnalytics,_HTMLElement);function ShopAnalytics(){babelHelpers.classCallCheck(this,ShopAnalytics);return babelHelpers.possibleConstructorReturn(this,(ShopAnalytics.__proto__||Object.getPrototypeOf(ShopAnalytics)).apply(this,arguments))}babelHelpers.createClass(ShopAnalytics,[{key:"connectedCallback",value:function connectedCallback(){(function(i,s,o,g,r,a,m){i.GoogleAnalyticsObject=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date;a=s.createElement(o),m=s.getElementsByTagName("body")[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,"script","//www.google-analytics.com/analytics.js","ga");ga("create",this.getAttribute("key"),"auto");ga("send","pageview")}}]);return ShopAnalytics}(HTMLElement);customElements.define("shop-analytics",ShopAnalytics);</script><!--
 @license
 Copyright (c) 2016 The Polymer Project Authors. All rights reserved.
 This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
@@ -185,7 +188,9 @@ The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
 The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
 Code distributed by Google as part of the polymer project is also
 subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
---><!--
+-->
+
+<!--
 @license
 Copyright (c) 2016 The Polymer Project Authors. All rights reserved.
 This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
@@ -211,7 +216,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     <app-localstorage-document key="shop-cart-data" data="{{cart}}"></app-localstorage-document>
   </template>
 
-  <script>var ShopCartData=function(_Polymer$Element){babelHelpers.inherits(ShopCartData,_Polymer$Element);function ShopCartData(){babelHelpers.classCallCheck(this,ShopCartData);return babelHelpers.possibleConstructorReturn(this,(ShopCartData.__proto__||Object.getPrototypeOf(ShopCartData)).apply(this,arguments))}babelHelpers.createClass(ShopCartData,[{key:"addItem",value:function(detail){var i=this._indexOfEntry(detail.item.name,detail.size);if(-1!==i){detail.quantity+=this.cart[i].quantity}this.setItem(detail)}},{key:"setItem",value:function(detail){var i=this._indexOfEntry(detail.item.name,detail.size);if(0===detail.quantity){if(-1!==i){this.splice("cart",i,1)}}else{if(-1!==i){this.splice("cart",i,1,detail)}else{this.push("cart",detail)}}}},{key:"clearCart",value:function(){this.cart=[]}},{key:"_computeNumItems",value:function(){if(this.cart){return this.cart.reduce(function(total,entry){return total+entry.quantity},0)}return 0}},{key:"_computeTotal",value:function(){if(this.cart){return this.cart.reduce(function(total,entry){return total+entry.quantity*entry.item.price},0)}return 0}},{key:"_indexOfEntry",value:function(name,size){if(this.cart){for(var i=0,entry;i<this.cart.length;++i){entry=this.cart[i];if(entry.item.name===name&&entry.size===size){return i}}}return-1}}],[{key:"is",get:function(){return"shop-cart-data"}},{key:"properties",get:function(){return{cart:{type:Array,value:function(){return[]},notify:!0},numItems:{type:Number,computed:"_computeNumItems(cart.splices)",notify:!0},total:{type:Number,computed:"_computeTotal(cart.splices)",notify:!0}}}}]);return ShopCartData}(Polymer.Element);customElements.define(ShopCartData.is,ShopCartData);</script>
+  <script>var ShopCartData=function(_Polymer$Element){babelHelpers.inherits(ShopCartData,_Polymer$Element);function ShopCartData(){babelHelpers.classCallCheck(this,ShopCartData);return babelHelpers.possibleConstructorReturn(this,(ShopCartData.__proto__||Object.getPrototypeOf(ShopCartData)).apply(this,arguments))}babelHelpers.createClass(ShopCartData,[{key:"addItem",value:function addItem(detail){var i=this._indexOfEntry(detail.item.name,detail.size);if(-1!==i){detail.quantity+=this.cart[i].quantity}this.setItem(detail)}},{key:"setItem",value:function setItem(detail){var i=this._indexOfEntry(detail.item.name,detail.size);if(0===detail.quantity){if(-1!==i){this.splice("cart",i,1)}}else{if(-1!==i){this.splice("cart",i,1,detail)}else{this.push("cart",detail)}}}},{key:"clearCart",value:function clearCart(){this.cart=[]}},{key:"_computeNumItems",value:function _computeNumItems(){if(this.cart){return this.cart.reduce(function(total,entry){return total+entry.quantity},0)}return 0}},{key:"_computeTotal",value:function _computeTotal(){if(this.cart){return this.cart.reduce(function(total,entry){return total+entry.quantity*entry.item.price},0)}return 0}},{key:"_indexOfEntry",value:function _indexOfEntry(name,size){if(this.cart){for(var i=0,entry;i<this.cart.length;++i){entry=this.cart[i];if(entry.item.name===name&&entry.size===size){return i}}}return-1}}],[{key:"is",get:function get(){return"shop-cart-data"}},{key:"properties",get:function get(){return{cart:{type:Array,value:function value(){return[]},notify:!0},numItems:{type:Number,computed:"_computeNumItems(cart.splices)",notify:!0},total:{type:Number,computed:"_computeTotal(cart.splices)",notify:!0}}}}]);return ShopCartData}(Polymer.Element);customElements.define(ShopCartData.is,ShopCartData);</script>
 
 </dom-module>
 <!--
@@ -222,7 +227,9 @@ The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
 The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
 Code distributed by Google as part of the polymer project is also
 subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
---><!--
+-->
+
+<!--
 @license
 Copyright (c) 2015 The Polymer Project Authors. All rights reserved.
 This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
@@ -553,7 +560,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
   </template>
 
-  <script>var ShopCartModal=function(_Polymer$mixinBehavio){babelHelpers.inherits(ShopCartModal,_Polymer$mixinBehavio);function ShopCartModal(){babelHelpers.classCallCheck(this,ShopCartModal);return babelHelpers.possibleConstructorReturn(this,(ShopCartModal.__proto__||Object.getPrototypeOf(ShopCartModal)).apply(this,arguments))}babelHelpers.createClass(ShopCartModal,[{key:"ready",value:function(){var _this=this;babelHelpers.get(ShopCartModal.prototype.__proto__||Object.getPrototypeOf(ShopCartModal.prototype),"ready",this).call(this);this.setAttribute("role","dialog");this.setAttribute("aria-modal","true");this.addEventListener("transitionend",function(e){return _this._transitionEnd(e)});this.addEventListener("iron-overlay-canceled",function(e){return _this._onCancel(e)})}},{key:"_renderOpened",value:function(){this.restoreFocusOnClose=!0;this.backdropElement.style.display="none";this.classList.add("opened")}},{key:"_renderClosed",value:function(){this.classList.remove("opened")}},{key:"_onCancel",value:function(e){if(babelHelpers.instanceof(e.detail,MouseEvent)){this.restoreFocusOnClose=!1}}},{key:"_transitionEnd",value:function(e){if(e.target!==this||"transform"!==e.propertyName){return}if(this.opened){this._finishRenderOpened();this.fire("announce","Item added to the cart")}else{this._finishRenderClosed();this.backdropElement.style.display=""}}},{key:"refit",value:function(){}},{key:"notifyResize",value:function(){}},{key:"_focusableNodes",get:function(){return[this.$.viewCartAnchor,this.$.closeBtn]}}],[{key:"is",get:function(){return"shop-cart-modal"}},{key:"properties",get:function(){return{withBackdrop:{type:Boolean,value:!0}}}}]);return ShopCartModal}(Polymer.mixinBehaviors([Polymer.IronOverlayBehaviorImpl],Polymer.Element));customElements.define(ShopCartModal.is,ShopCartModal);</script>
+  <script>var ShopCartModal=function(_Polymer$mixinBehavio){babelHelpers.inherits(ShopCartModal,_Polymer$mixinBehavio);function ShopCartModal(){babelHelpers.classCallCheck(this,ShopCartModal);return babelHelpers.possibleConstructorReturn(this,(ShopCartModal.__proto__||Object.getPrototypeOf(ShopCartModal)).apply(this,arguments))}babelHelpers.createClass(ShopCartModal,[{key:"ready",value:function ready(){var _this=this;babelHelpers.get(ShopCartModal.prototype.__proto__||Object.getPrototypeOf(ShopCartModal.prototype),"ready",this).call(this);this.setAttribute("role","dialog");this.setAttribute("aria-modal","true");this.addEventListener("transitionend",function(e){return _this._transitionEnd(e)});this.addEventListener("iron-overlay-canceled",function(e){return _this._onCancel(e)})}},{key:"_renderOpened",value:function _renderOpened(){this.restoreFocusOnClose=!0;this.backdropElement.style.display="none";this.classList.add("opened")}},{key:"_renderClosed",value:function _renderClosed(){this.classList.remove("opened")}},{key:"_onCancel",value:function _onCancel(e){if(babelHelpers.instanceof(e.detail,MouseEvent)){this.restoreFocusOnClose=!1}}},{key:"_transitionEnd",value:function _transitionEnd(e){if(e.target!==this||"transform"!==e.propertyName){return}if(this.opened){this._finishRenderOpened();this.fire("announce","Item added to the cart")}else{this._finishRenderClosed();this.backdropElement.style.display=""}}},{key:"refit",value:function refit(){}},{key:"notifyResize",value:function notifyResize(){}},{key:"_focusableNodes",get:function get(){return[this.$.viewCartAnchor,this.$.closeBtn]}}],[{key:"is",get:function get(){return"shop-cart-modal"}},{key:"properties",get:function get(){return{withBackdrop:{type:Boolean,value:!0}}}}]);return ShopCartModal}(Polymer.mixinBehaviors([Polymer.IronOverlayBehaviorImpl],Polymer.Element));customElements.define(ShopCartModal.is,ShopCartModal);</script>
 
 </dom-module>
 <!--
@@ -564,7 +571,9 @@ The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
 The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
 Code distributed by Google as part of the polymer project is also
 subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
---><dom-module id="shop-snackbar">
+-->
+
+<dom-module id="shop-snackbar">
 
   <template>
 
@@ -574,7 +583,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
   </template>
 
-  <script>var ShopSnackbar=function(_Polymer$Element){babelHelpers.inherits(ShopSnackbar,_Polymer$Element);function ShopSnackbar(){babelHelpers.classCallCheck(this,ShopSnackbar);return babelHelpers.possibleConstructorReturn(this,(ShopSnackbar.__proto__||Object.getPrototypeOf(ShopSnackbar)).apply(this,arguments))}babelHelpers.createClass(ShopSnackbar,[{key:"open",value:function(){Polymer.dom.flush();this.offsetHeight&&this.classList.add("opened");this._closeDebouncer=Polymer.Debouncer.debounce(this._closeDebouncer,Polymer.Async.timeOut.after(4e3),this.close.bind(this))}},{key:"close",value:function(){this.classList.remove("opened")}}],[{key:"is",get:function(){return"shop-snackbar"}}]);return ShopSnackbar}(Polymer.Element);customElements.define(ShopSnackbar.is,ShopSnackbar);</script>
+  <script>var ShopSnackbar=function(_Polymer$Element){babelHelpers.inherits(ShopSnackbar,_Polymer$Element);function ShopSnackbar(){babelHelpers.classCallCheck(this,ShopSnackbar);return babelHelpers.possibleConstructorReturn(this,(ShopSnackbar.__proto__||Object.getPrototypeOf(ShopSnackbar)).apply(this,arguments))}babelHelpers.createClass(ShopSnackbar,[{key:"open",value:function open(){Polymer.dom.flush();this.offsetHeight&&this.classList.add("opened");this._closeDebouncer=Polymer.Debouncer.debounce(this._closeDebouncer,Polymer.Async.timeOut.after(4e3),this.close.bind(this))}},{key:"close",value:function close(){this.classList.remove("opened")}}],[{key:"is",get:function get(){return"shop-snackbar"}}]);return ShopSnackbar}(Polymer.Element);customElements.define(ShopSnackbar.is,ShopSnackbar);</script>
 
 </dom-module>
 <!--
@@ -585,7 +594,9 @@ The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
 The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
 Code distributed by Google as part of the polymer project is also
 subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
---><!--
+-->
+
+<!--
 @license
 Copyright (c) 2016 The Polymer Project Authors. All rights reserved.
 This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
@@ -593,11 +604,13 @@ The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
 The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
 Code distributed by Google as part of the polymer project is also
 subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
---><dom-module id="shop-tabs-overlay">
+-->
+
+<dom-module id="shop-tabs-overlay">
   <template strip-whitespace="">
     <style>:host{position:absolute;display:none;pointer-events:none;opacity:0;top:0;right:0;bottom:0;left:0;transition-property:top, right, bottom, left, opacity;}</style>
   </template>
-  <script>var ShopTabsOverlay=function(_Polymer$Element){babelHelpers.inherits(ShopTabsOverlay,_Polymer$Element);babelHelpers.createClass(ShopTabsOverlay,null,[{key:"is",get:function(){return"shop-tabs-overlay"}},{key:"properties",get:function(){return{target:{type:Object,observer:"_targetChanged"}}}}]);function ShopTabsOverlay(){var _this;babelHelpers.classCallCheck(this,ShopTabsOverlay);_this=babelHelpers.possibleConstructorReturn(this,(ShopTabsOverlay.__proto__||Object.getPrototypeOf(ShopTabsOverlay)).call(this));_this._lastTarget=void 0;_this._transitionsInFlight=[];return _this}babelHelpers.createClass(ShopTabsOverlay,[{key:"ready",value:function(){var _this2=this;babelHelpers.get(ShopTabsOverlay.prototype.__proto__||Object.getPrototypeOf(ShopTabsOverlay.prototype),"ready",this).call(this);this.addEventListener("transitionend",function(e){return _this2._onTransitionend(e)})}},{key:"_targetChanged",value:function(newTarget,oldTarget){if(!this._transitionsInFlight.length){if(this._lastTarget){this._lastTarget.classList.remove("shop-tabs-overlay-static-above")}this.style.display="block";this._move(oldTarget,newTarget);this._lastTarget=this.target}}},{key:"_onTransitionend",value:function(event){var index=this._transitionsInFlight.indexOf(event.propertyName);if(0<=index){this._transitionsInFlight.splice(index,1)}if(!this._transitionsInFlight.length){this._moveComplete()}}},{key:"_moveComplete",value:function(){if(this._lastTarget!==this.target){this._move(this._lastTarget,this.target);this._lastTarget=this.target}else{if(this._lastTarget){this._lastTarget.classList.add("shop-tabs-overlay-static-above")}this.style.display="none"}}},{key:"_move",value:function(oldTarget,newTarget){var _this3=this,from=oldTarget||newTarget,to=newTarget||oldTarget;if(!from&&!to)return;var fromOpacity=oldTarget?1:0,toOpacity=newTarget?1:0;Polymer.dom.flush();var thisRect=this.getBoundingClientRect(),thisStyle=window.getComputedStyle(this),fromRect=from.getBoundingClientRect(),toRect=to.getBoundingClientRect();if(0===toRect.top&&0===toRect.right&&0===toRect.bottom&&0===toRect.left&&0===toRect.width&&0===toRect.height){this.style.transitionProperty="none";this.style.opacity=toOpacity;this._transitionsInFlight=[];Polymer.Async.microTask.run(this._moveComplete.bind(this));return}else{this.style.transitionProperty=""}var top=parseFloat(thisStyle.top||"0")+(fromRect.top-thisRect.top),right=parseFloat(thisStyle.right||"0")-(fromRect.right-thisRect.right),bottom=parseFloat(thisStyle.bottom||"0")-(fromRect.bottom-thisRect.bottom),left=parseFloat(thisStyle.left||"0")+(fromRect.left-thisRect.left);this.style.transitionDuration="0s";this.style.transitionDelay="0s";var startValues=[this.style.top=top+"px",this.style.right=right+"px",this.style.bottom=bottom+"px",this.style.left=left+"px",this.style.opacity=fromOpacity+""];top+=toRect.top-fromRect.top;right-=toRect.right-fromRect.right;bottom-=toRect.bottom-fromRect.bottom;left+=toRect.left-fromRect.left;var durations=[.2,.2,.2,.2,.2],delays=[0,0,0,0,0];if(fromRect.left<toRect.left&&fromRect.right<toRect.right){delays[3]=.1}else if(fromRect.left>toRect.left&&fromRect.right>toRect.right){delays[1]=.1}if(fromRect.top<toRect.top&&fromRect.bottom<toRect.bottom){delays[0]=.1}else if(fromRect.top>toRect.top&&fromRect.bottom>toRect.bottom){delays[2]=.1}for(var endValues=[top+"px",right+"px",bottom+"px",left+"px",toOpacity+""],names=["top","right","bottom","left","opacity"],i=0;i<startValues.length;i++){if(startValues[i]===endValues[i])continue;if(0===durations[i]&&0===delays[i])continue;this._transitionsInFlight.push(names[i])}Polymer.Async.timeOut.run(function(){_this3.style.transitionDuration=durations.map(function(x){return x+"s"}).join(", ");_this3.style.transitionDelay=delays.map(function(x){return x+"s"}).join(", ");_this3.style.top=top+"px";_this3.style.right=right+"px";_this3.style.bottom=bottom+"px";_this3.style.left=left+"px";_this3.style.opacity=toOpacity+""},1)}}]);return ShopTabsOverlay}(Polymer.Element);customElements.define(ShopTabsOverlay.is,ShopTabsOverlay);</script>
+  <script>var ShopTabsOverlay=function(_Polymer$Element){babelHelpers.inherits(ShopTabsOverlay,_Polymer$Element);babelHelpers.createClass(ShopTabsOverlay,null,[{key:"is",get:function get(){return"shop-tabs-overlay"}},{key:"properties",get:function get(){return{target:{type:Object,observer:"_targetChanged"}}}}]);function ShopTabsOverlay(){var _this;babelHelpers.classCallCheck(this,ShopTabsOverlay);_this=babelHelpers.possibleConstructorReturn(this,(ShopTabsOverlay.__proto__||Object.getPrototypeOf(ShopTabsOverlay)).call(this));_this._lastTarget=void 0;_this._transitionsInFlight=[];return _this}babelHelpers.createClass(ShopTabsOverlay,[{key:"ready",value:function ready(){var _this2=this;babelHelpers.get(ShopTabsOverlay.prototype.__proto__||Object.getPrototypeOf(ShopTabsOverlay.prototype),"ready",this).call(this);this.addEventListener("transitionend",function(e){return _this2._onTransitionend(e)})}},{key:"_targetChanged",value:function _targetChanged(newTarget,oldTarget){if(!this._transitionsInFlight.length){if(this._lastTarget){this._lastTarget.classList.remove("shop-tabs-overlay-static-above")}this.style.display="block";this._move(oldTarget,newTarget);this._lastTarget=this.target}}},{key:"_onTransitionend",value:function _onTransitionend(event){var index=this._transitionsInFlight.indexOf(event.propertyName);if(0<=index){this._transitionsInFlight.splice(index,1)}if(!this._transitionsInFlight.length){this._moveComplete()}}},{key:"_moveComplete",value:function _moveComplete(){if(this._lastTarget!==this.target){this._move(this._lastTarget,this.target);this._lastTarget=this.target}else{if(this._lastTarget){this._lastTarget.classList.add("shop-tabs-overlay-static-above")}this.style.display="none"}}},{key:"_move",value:function _move(oldTarget,newTarget){var _this3=this,from=oldTarget||newTarget,to=newTarget||oldTarget;if(!from&&!to)return;var fromOpacity=oldTarget?1:0,toOpacity=newTarget?1:0;Polymer.dom.flush();var thisRect=this.getBoundingClientRect(),thisStyle=window.getComputedStyle(this),fromRect=from.getBoundingClientRect(),toRect=to.getBoundingClientRect();if(0===toRect.top&&0===toRect.right&&0===toRect.bottom&&0===toRect.left&&0===toRect.width&&0===toRect.height){this.style.transitionProperty="none";this.style.opacity=toOpacity;this._transitionsInFlight=[];Polymer.Async.microTask.run(this._moveComplete.bind(this));return}else{this.style.transitionProperty=""}var top=parseFloat(thisStyle.top||"0")+(fromRect.top-thisRect.top),right=parseFloat(thisStyle.right||"0")-(fromRect.right-thisRect.right),bottom=parseFloat(thisStyle.bottom||"0")-(fromRect.bottom-thisRect.bottom),left=parseFloat(thisStyle.left||"0")+(fromRect.left-thisRect.left);this.style.transitionDuration="0s";this.style.transitionDelay="0s";var startValues=[this.style.top=top+"px",this.style.right=right+"px",this.style.bottom=bottom+"px",this.style.left=left+"px",this.style.opacity=fromOpacity+""];top+=toRect.top-fromRect.top;right-=toRect.right-fromRect.right;bottom-=toRect.bottom-fromRect.bottom;left+=toRect.left-fromRect.left;var durations=[.2,.2,.2,.2,.2],delays=[0,0,0,0,0];if(fromRect.left<toRect.left&&fromRect.right<toRect.right){delays[3]=.1}else if(fromRect.left>toRect.left&&fromRect.right>toRect.right){delays[1]=.1}if(fromRect.top<toRect.top&&fromRect.bottom<toRect.bottom){delays[0]=.1}else if(fromRect.top>toRect.top&&fromRect.bottom>toRect.bottom){delays[2]=.1}for(var endValues=[top+"px",right+"px",bottom+"px",left+"px",toOpacity+""],names=["top","right","bottom","left","opacity"],i=0;i<startValues.length;i++){if(startValues[i]===endValues[i])continue;if(0===durations[i]&&0===delays[i])continue;this._transitionsInFlight.push(names[i])}Polymer.Async.timeOut.run(function(){_this3.style.transitionDuration=durations.map(function(x){return x+"s"}).join(", ");_this3.style.transitionDelay=delays.map(function(x){return x+"s"}).join(", ");_this3.style.top=top+"px";_this3.style.right=right+"px";_this3.style.bottom=bottom+"px";_this3.style.left=left+"px";_this3.style.opacity=toOpacity+""},1)}}]);return ShopTabsOverlay}(Polymer.Element);customElements.define(ShopTabsOverlay.is,ShopTabsOverlay);</script>
 </dom-module>
 <dom-module id="shop-tabs">
   <template strip-whitespace="">
@@ -607,7 +620,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       <slot></slot>
     </div>
   </template>
-  <script>var ShopTabs=function(_Polymer$mixinBehavio){babelHelpers.inherits(ShopTabs,_Polymer$mixinBehavio);function ShopTabs(){babelHelpers.classCallCheck(this,ShopTabs);return babelHelpers.possibleConstructorReturn(this,(ShopTabs.__proto__||Object.getPrototypeOf(ShopTabs)).apply(this,arguments))}babelHelpers.createClass(ShopTabs,[{key:"_onSelectedItemChanged",value:function(selectedItem){if(selectedItem===void 0&&this.selected)return;this.$.overlay.target=selectedItem}}],[{key:"is",get:function(){return"shop-tabs"}},{key:"observers",get:function(){return["_onSelectedItemChanged(selectedItem)"]}}]);return ShopTabs}(Polymer.mixinBehaviors([Polymer.IronSelectableBehavior],Polymer.Element));customElements.define(ShopTabs.is,ShopTabs);</script>
+  <script>var ShopTabs=function(_Polymer$mixinBehavio){babelHelpers.inherits(ShopTabs,_Polymer$mixinBehavio);function ShopTabs(){babelHelpers.classCallCheck(this,ShopTabs);return babelHelpers.possibleConstructorReturn(this,(ShopTabs.__proto__||Object.getPrototypeOf(ShopTabs)).apply(this,arguments))}babelHelpers.createClass(ShopTabs,[{key:"_onSelectedItemChanged",value:function _onSelectedItemChanged(selectedItem){if(selectedItem===void 0&&this.selected)return;this.$.overlay.target=selectedItem}}],[{key:"is",get:function get(){return"shop-tabs"}},{key:"observers",get:function get(){return["_onSelectedItemChanged(selectedItem)"]}}]);return ShopTabs}(Polymer.mixinBehaviors([Polymer.IronSelectableBehavior],Polymer.Element));customElements.define(ShopTabs.is,ShopTabs);</script>
 </dom-module>
 <!--
 @license
@@ -617,7 +630,9 @@ The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
 The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
 Code distributed by Google as part of the polymer project is also
 subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
---><!--
+-->
+
+<!--
 @license
 Copyright (c) 2016 The Polymer Project Authors. All rights reserved.
 This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
@@ -625,12 +640,14 @@ The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
 The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
 Code distributed by Google as part of the polymer project is also
 subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
---><dom-module id="shop-ripple-container">
+-->
+
+<dom-module id="shop-ripple-container">
   <template strip-whitespace="">
     <style>:host{display:inline-block;position:relative;}paper-ripple{color:var(--app-accent-color);}</style>
     <slot></slot>
   </template>
-  <script>var ShopRippleContainer=function(_Polymer$mixinBehavio){babelHelpers.inherits(ShopRippleContainer,_Polymer$mixinBehavio);babelHelpers.createClass(ShopRippleContainer,null,[{key:"is",get:function(){return"shop-ripple-container"}}]);function ShopRippleContainer(){var _this;babelHelpers.classCallCheck(this,ShopRippleContainer);_this=babelHelpers.possibleConstructorReturn(this,(ShopRippleContainer.__proto__||Object.getPrototypeOf(ShopRippleContainer)).call(this));_this._isDown=!1;return _this}babelHelpers.createClass(ShopRippleContainer,[{key:"ready",value:function(){var _this2=this;babelHelpers.get(ShopRippleContainer.prototype.__proto__||Object.getPrototypeOf(ShopRippleContainer.prototype),"ready",this).call(this);this.addEventListener("focus",function(e){return _this2._onFocus(e)},!0);this.addEventListener("blur",function(e){return _this2._onBlur(e)},!0);Polymer.Gestures.addListener(this,"down",this._rippleDown);Polymer.Gestures.addListener(this,"up",this._rippleUp)}},{key:"_onFocus",value:function(event){if(!this._isDown){this._rippleDown(event)}}},{key:"_onBlur",value:function(event){this._rippleUp(event)}},{key:"_rippleDown",value:function(event){this._isDown=!0;this.getRipple().downAction(event)}},{key:"_rippleUp",value:function(event){this._isDown=!1;this.getRipple().upAction(event)}}]);return ShopRippleContainer}(Polymer.mixinBehaviors([Polymer.PaperRippleBehavior],Polymer.Element));customElements.define(ShopRippleContainer.is,ShopRippleContainer);</script>
+  <script>var ShopRippleContainer=function(_Polymer$mixinBehavio){babelHelpers.inherits(ShopRippleContainer,_Polymer$mixinBehavio);babelHelpers.createClass(ShopRippleContainer,null,[{key:"is",get:function get(){return"shop-ripple-container"}}]);function ShopRippleContainer(){var _this;babelHelpers.classCallCheck(this,ShopRippleContainer);_this=babelHelpers.possibleConstructorReturn(this,(ShopRippleContainer.__proto__||Object.getPrototypeOf(ShopRippleContainer)).call(this));_this._isDown=!1;return _this}babelHelpers.createClass(ShopRippleContainer,[{key:"ready",value:function ready(){var _this2=this;babelHelpers.get(ShopRippleContainer.prototype.__proto__||Object.getPrototypeOf(ShopRippleContainer.prototype),"ready",this).call(this);this.addEventListener("focus",function(e){return _this2._onFocus(e)},!0);this.addEventListener("blur",function(e){return _this2._onBlur(e)},!0);Polymer.Gestures.addListener(this,"down",this._rippleDown);Polymer.Gestures.addListener(this,"up",this._rippleUp)}},{key:"_onFocus",value:function _onFocus(event){if(!this._isDown){this._rippleDown(event)}}},{key:"_onBlur",value:function _onBlur(event){this._rippleUp(event)}},{key:"_rippleDown",value:function _rippleDown(event){this._isDown=!0;this.getRipple().downAction(event)}},{key:"_rippleUp",value:function _rippleUp(event){this._isDown=!1;this.getRipple().upAction(event)}}]);return ShopRippleContainer}(Polymer.mixinBehaviors([Polymer.PaperRippleBehavior],Polymer.Element));customElements.define(ShopRippleContainer.is,ShopRippleContainer);</script>
 </dom-module>
 <dom-module id="shop-tab">
   <template strip-whitespace="">
@@ -640,7 +657,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       <slot></slot>
     </shop-ripple-container>
   </template>
-  <script>var ShopTab=function(_Polymer$Element){babelHelpers.inherits(ShopTab,_Polymer$Element);function ShopTab(){babelHelpers.classCallCheck(this,ShopTab);return babelHelpers.possibleConstructorReturn(this,(ShopTab.__proto__||Object.getPrototypeOf(ShopTab)).apply(this,arguments))}babelHelpers.createClass(ShopTab,null,[{key:"is",get:function(){return"shop-tab"}}]);return ShopTab}(Polymer.Element);customElements.define(ShopTab.is,ShopTab);</script>
+  <script>var ShopTab=function(_Polymer$Element){babelHelpers.inherits(ShopTab,_Polymer$Element);function ShopTab(){babelHelpers.classCallCheck(this,ShopTab);return babelHelpers.possibleConstructorReturn(this,(ShopTab.__proto__||Object.getPrototypeOf(ShopTab)).apply(this,arguments))}babelHelpers.createClass(ShopTab,null,[{key:"is",get:function get(){return"shop-tab"}}]);return ShopTab}(Polymer.Element);customElements.define(ShopTab.is,ShopTab);</script>
 </dom-module>
 <!--
 @license
@@ -724,7 +741,9 @@ The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
 The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
 Code distributed by Google as part of the polymer project is also
 subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
---><dom-module id="shop-network-warning">
+-->
+
+<dom-module id="shop-network-warning">
 
   <template>
 
@@ -744,7 +763,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
   </template>
 
-  <script>var ShopNetworkWarning=function(_Polymer$Element){babelHelpers.inherits(ShopNetworkWarning,_Polymer$Element);function ShopNetworkWarning(){babelHelpers.classCallCheck(this,ShopNetworkWarning);return babelHelpers.possibleConstructorReturn(this,(ShopNetworkWarning.__proto__||Object.getPrototypeOf(ShopNetworkWarning)).apply(this,arguments))}babelHelpers.createClass(ShopNetworkWarning,[{key:"_tryReconnect",value:function(){this.dispatchEvent(new CustomEvent("try-reconnect",{composed:!0}))}}],[{key:"is",get:function(){return"shop-network-warning"}},{key:"properties",get:function(){return{offline:Boolean}}}]);return ShopNetworkWarning}(Polymer.Element);customElements.define(ShopNetworkWarning.is,ShopNetworkWarning);</script>
+  <script>var ShopNetworkWarning=function(_Polymer$Element){babelHelpers.inherits(ShopNetworkWarning,_Polymer$Element);function ShopNetworkWarning(){babelHelpers.classCallCheck(this,ShopNetworkWarning);return babelHelpers.possibleConstructorReturn(this,(ShopNetworkWarning.__proto__||Object.getPrototypeOf(ShopNetworkWarning)).apply(this,arguments))}babelHelpers.createClass(ShopNetworkWarning,[{key:"_tryReconnect",value:function _tryReconnect(){this.dispatchEvent(new CustomEvent("try-reconnect",{composed:!0}))}}],[{key:"is",get:function get(){return"shop-network-warning"}},{key:"properties",get:function get(){return{offline:Boolean}}}]);return ShopNetworkWarning}(Polymer.Element);customElements.define(ShopNetworkWarning.is,ShopNetworkWarning);</script>
 
 </dom-module>
 <!--
@@ -755,7 +774,9 @@ The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
 The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
 Code distributed by Google as part of the polymer project is also
 subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
---><dom-module id="shop-404-warning">
+-->
+
+<dom-module id="shop-404-warning">
   <template>
     <style include="shop-button">:host{display:block;text-align:center;color:var(--app-secondary-color);}iron-icon{display:inline-block;width:60px;height:60px;}h1{margin:50px 0 50px 0;font-weight:300;}</style>
 
@@ -768,7 +789,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     </shop-button>
 
   </template>
-  <script>var Shop404Warning=function(_Polymer$Element){babelHelpers.inherits(Shop404Warning,_Polymer$Element);function Shop404Warning(){babelHelpers.classCallCheck(this,Shop404Warning);return babelHelpers.possibleConstructorReturn(this,(Shop404Warning.__proto__||Object.getPrototypeOf(Shop404Warning)).apply(this,arguments))}babelHelpers.createClass(Shop404Warning,null,[{key:"is",get:function(){return"shop-404-warning"}}]);return Shop404Warning}(Polymer.Element);customElements.define(Shop404Warning.is,Shop404Warning);</script>
+  <script>var Shop404Warning=function(_Polymer$Element){babelHelpers.inherits(Shop404Warning,_Polymer$Element);function Shop404Warning(){babelHelpers.classCallCheck(this,Shop404Warning);return babelHelpers.possibleConstructorReturn(this,(Shop404Warning.__proto__||Object.getPrototypeOf(Shop404Warning)).apply(this,arguments))}babelHelpers.createClass(Shop404Warning,null,[{key:"is",get:function get(){return"shop-404-warning"}}]);return Shop404Warning}(Polymer.Element);customElements.define(Shop404Warning.is,Shop404Warning);</script>
 </dom-module>
 <!--
 @license
@@ -778,7 +799,9 @@ The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
 The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
 Code distributed by Google as part of the polymer project is also
 subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
---><dom-module id="shop-cart-item">
+-->
+
+<dom-module id="shop-cart-item">
 
   <template strip-whitespace="">
 
@@ -823,7 +846,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     </div>
   </template>
 
-  <script>var ShopCartItem=function(_Polymer$Element){babelHelpers.inherits(ShopCartItem,_Polymer$Element);function ShopCartItem(){babelHelpers.classCallCheck(this,ShopCartItem);return babelHelpers.possibleConstructorReturn(this,(ShopCartItem.__proto__||Object.getPrototypeOf(ShopCartItem)).apply(this,arguments))}babelHelpers.createClass(ShopCartItem,[{key:"_quantityChange",value:function(){this._setCartItem(parseInt(this.$.quantitySelect.value,10))}},{key:"_setCartItem",value:function(quantity){this.dispatchEvent(new CustomEvent("set-cart-item",{bubbles:!0,composed:!0,detail:{item:this.entry.item,quantity:quantity,size:this.entry.size}}))}},{key:"_formatPrice",value:function(price){return price?"$"+price.toFixed(2):""}},{key:"_removeItem",value:function(){this._setCartItem(0)}}],[{key:"is",get:function(){return"shop-cart-item"}},{key:"properties",get:function(){return{entry:Object}}}]);return ShopCartItem}(Polymer.Element);customElements.define(ShopCartItem.is,ShopCartItem);</script>
+  <script>var ShopCartItem=function(_Polymer$Element){babelHelpers.inherits(ShopCartItem,_Polymer$Element);function ShopCartItem(){babelHelpers.classCallCheck(this,ShopCartItem);return babelHelpers.possibleConstructorReturn(this,(ShopCartItem.__proto__||Object.getPrototypeOf(ShopCartItem)).apply(this,arguments))}babelHelpers.createClass(ShopCartItem,[{key:"_quantityChange",value:function _quantityChange(){this._setCartItem(parseInt(this.$.quantitySelect.value,10))}},{key:"_setCartItem",value:function _setCartItem(quantity){this.dispatchEvent(new CustomEvent("set-cart-item",{bubbles:!0,composed:!0,detail:{item:this.entry.item,quantity:quantity,size:this.entry.size}}))}},{key:"_formatPrice",value:function _formatPrice(price){return price?"$"+price.toFixed(2):""}},{key:"_removeItem",value:function _removeItem(){this._setCartItem(0)}}],[{key:"is",get:function get(){return"shop-cart-item"}},{key:"properties",get:function get(){return{entry:Object}}}]);return ShopCartItem}(Polymer.Element);customElements.define(ShopCartItem.is,ShopCartItem);</script>
 
 </dom-module>
 <!--
