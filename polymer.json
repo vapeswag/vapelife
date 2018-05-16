@@ -48,13 +48,13 @@
         "transformModulesToAmd": true
       },
       "css": {
-        "minify": true
+        "minify": false
       },
       "html": {
         "minify": false
       },
       "bundle": true,
-      "addServiceWorker": false,
+      "addServiceWorker": true,
       "addPushManifest": false,
       "preset": "es5-bundled"
     }
