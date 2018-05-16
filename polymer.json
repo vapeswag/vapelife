@@ -12,19 +12,49 @@
     "src/**/*",
     "data/**/*",
     "images/**/*",
-    "bower.json"
+    "bower.json",
+    "index.html",
+    "src/shop-app.html",
+    "src/shop-list.html",
+    "src/shop-detail.html",
+    "src/shop-cart.html",
+    "src/shop-checkout.html",
+    "src/lazy-resources.html"
   ],
   "extraDependencies": [
+    "bower_components/webcomponentsjs/*.js",
     "app.yaml",
     "manifest.json",
     "bower_components/webcomponentsjs/*"
   ],
-  "lint": {
-    "rules": ["polymer-2-hybrid"]
-  },
   "builds": [
     {
+      "name": "es5-bundled",
+      "js": {
+        "minify": true,
+        "compile": {
+          "exclude": [
+            "*.min.js"
+          ]
+        },
+        "transformModulesToAmd": true
+      },
+      "css": {
+        "minify": true
+      },
+      "html": {
+        "minify": true
+      },
+      "bundle": true,
+      "addServiceWorker": true,
+      "addPushManifest": false,
       "preset": "es5-bundled"
     }
-  ]
+  ],
+  "lint": {
+    "rules": [
+      "polymer-2-hybrid"
+    ]
+  },
+  "moduleResolution": "node"
 }
