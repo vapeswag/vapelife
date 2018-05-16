@@ -6,14 +6,12 @@ The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
 The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
 Code distributed by Google as part of the polymer project is also
 subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
--->
-
-<link rel="import" href="../bower_components/polymer/polymer-element.html">
+--><link rel="import" href="../bower_components/polymer/polymer-element.html">
 <link rel="import" href="../bower_components/iron-flex-layout/iron-flex-layout.html">
 <link rel="import" href="shop-ripple-container.html">
 
 <dom-module id="shop-tab">
-  <template strip-whitespace>
+  <template strip-whitespace="">
     <style>
       [hidden] {
         display: none !important;
@@ -44,11 +42,24 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       <slot></slot>
     </shop-ripple-container>
   </template>
-  <script>
-    class ShopTab extends Polymer.Element {
-      static get is() { return 'shop-tab'; }
-    }
+  <script>var ShopTab =
+/*#__PURE__*/
+function (_Polymer$Element) {
+  babelHelpers.inherits(ShopTab, _Polymer$Element);
 
-    customElements.define(ShopTab.is, ShopTab);
-  </script>
+  function ShopTab() {
+    babelHelpers.classCallCheck(this, ShopTab);
+    return babelHelpers.possibleConstructorReturn(this, (ShopTab.__proto__ || Object.getPrototypeOf(ShopTab)).apply(this, arguments));
+  }
+
+  babelHelpers.createClass(ShopTab, null, [{
+    key: "is",
+    get: function get() {
+      return 'shop-tab';
+    }
+  }]);
+  return ShopTab;
+}(Polymer.Element);
+
+customElements.define(ShopTab.is, ShopTab);</script>
 </dom-module>

@@ -6,9 +6,7 @@ The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
 The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
 Code distributed by Google as part of the polymer project is also
 subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
--->
-
-<link rel="import" href="../bower_components/polymer/polymer-element.html">
+--><link rel="import" href="../bower_components/polymer/polymer-element.html">
 
 <dom-module id="shop-snackbar">
 
@@ -58,27 +56,37 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
   </template>
 
-  <script>
+  <script>var ShopSnackbar =
+/*#__PURE__*/
+function (_Polymer$Element) {
+  babelHelpers.inherits(ShopSnackbar, _Polymer$Element);
 
-    class ShopSnackbar extends Polymer.Element {
+  function ShopSnackbar() {
+    babelHelpers.classCallCheck(this, ShopSnackbar);
+    return babelHelpers.possibleConstructorReturn(this, (ShopSnackbar.__proto__ || Object.getPrototypeOf(ShopSnackbar)).apply(this, arguments));
+  }
 
-      static get is() { return 'shop-snackbar'; }
-
-      open() {
-        Polymer.dom.flush();
-        this.offsetHeight && this.classList.add('opened');
-        this._closeDebouncer = Polymer.Debouncer.debounce(this._closeDebouncer,
-          Polymer.Async.timeOut.after(4000), this.close.bind(this));
-      }
-
-      close() {
-        this.classList.remove('opened');
-      }
-
+  babelHelpers.createClass(ShopSnackbar, [{
+    key: "open",
+    value: function open() {
+      Polymer.dom.flush();
+      this.offsetHeight && this.classList.add('opened');
+      this._closeDebouncer = Polymer.Debouncer.debounce(this._closeDebouncer, Polymer.Async.timeOut.after(4000), this.close.bind(this));
     }
+  }, {
+    key: "close",
+    value: function close() {
+      this.classList.remove('opened');
+    }
+  }], [{
+    key: "is",
+    get: function get() {
+      return 'shop-snackbar';
+    }
+  }]);
+  return ShopSnackbar;
+}(Polymer.Element);
 
-    customElements.define(ShopSnackbar.is, ShopSnackbar);
-
-  </script>
+customElements.define(ShopSnackbar.is, ShopSnackbar);</script>
 
 </dom-module>

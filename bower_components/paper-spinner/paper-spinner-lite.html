@@ -6,9 +6,7 @@ The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
 The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
 Code distributed by Google as part of the polymer project is also
 subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
--->
-
-<link rel="import" href="../polymer/polymer.html">
+--><link rel="import" href="../polymer/polymer.html">
 <link rel="import" href="../paper-styles/color.html">
 <link rel="import" href="paper-spinner-behavior.html">
 <link rel="import" href="paper-spinner-styles.html">
@@ -47,14 +45,10 @@ Custom property | Description | Default
 -->
 
 <dom-module id="paper-spinner-lite">
-  <template strip-whitespace>
+  <template strip-whitespace="">
     <style include="paper-spinner-styles"></style>
 
-    <div
-        id="spinnerContainer"
-        class-name="[[__computeContainerClasses(active, __coolingDown)]]"
-        on-animationend="__reset"
-        on-webkit-animation-end="__reset">
+    <div id="spinnerContainer" class-name="[[__computeContainerClasses(active, __coolingDown)]]" on-animationend="__reset" on-webkit-animation-end="__reset">
       <div class="spinner-layer">
         <div class="circle-clipper left"></div>
         <div class="circle-clipper right"></div>
@@ -62,13 +56,8 @@ Custom property | Description | Default
     </div>
   </template>
 
-  <script>
-    Polymer({
-      is: 'paper-spinner-lite',
-
-      behaviors: [
-        Polymer.PaperSpinnerBehavior
-      ]
-    });
-  </script>
+  <script>Polymer({
+  is: 'paper-spinner-lite',
+  behaviors: [Polymer.PaperSpinnerBehavior]
+});</script>
 </dom-module>
